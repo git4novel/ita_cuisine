@@ -10,26 +10,26 @@ const Footer = () => {
         <div className='mx-3 row mt-2 mb-2'>
             <div className=' col-12 col-lg-5 text-start'>
             <div className='d-flex'><MdFoodBank className='text-danger mt-2'></MdFoodBank><p className='text-black dis fs-4 '>ita_Cuisine</p></div>
-            <p>Welcome to out cuisine. <br /> Best Food for our all customer. <br /> pick your favorite.</p>
+            <small>Welcome to out cuisine. <br /> Best Food for our all customer. <br /> pick your favorite.</small>
             </div>
             {/* categories */}
-            <div className='col-6 col-lg-2'>
+            <div className='col-4 col-lg-2'>
                 <h4 className='mb-3'>Categories</h4>
-                <div className='d-flex mb-1'><FaArrowCircleRight className='text-danger mt-1'/> <p>Breakfast Recipes</p></div>
-                <div className='d-flex mb-1'><FaArrowCircleRight className='text-danger mt-1'/> <p>Dinner Recipes</p></div>
-                <div className='d-flex mb-1'><FaArrowCircleRight className='text-danger mt-1'/> <p>Lunch Recipes</p></div>
-                <div className='d-flex mb-1'><FaArrowCircleRight className='text-danger mt-1'/> <p>Dine & Dash</p></div>
+                <small className='d-flex mb-1'><FaArrowCircleRight className='text-danger mt-1'/> <p>Breakfast Recipes</p></small>
+                <small className='d-flex mb-1'><FaArrowCircleRight className='text-danger mt-1'/> <p>Dinner Recipes</p></small>
+                <small className='d-flex mb-1'><FaArrowCircleRight className='text-danger mt-1'/> <p>Lunch Recipes</p></small>
+                <small className='d-flex mb-1'><FaArrowCircleRight className='text-danger mt-1'/> <p>Dine & Dash</p></small>
             </div>
             {/* learn more */}
-            <div className='col-6 col-lg-2'>
+            <div className='col-4 col-lg-2'>
                 <h4>Learn More</h4>
-                <div className='d-flex mb-1'><FaArrowCircleRight className='text-danger mt-1'/> <p>Breakfast Recipes</p></div>
-                <div className='d-flex mb-1'><FaArrowCircleRight className='text-danger mt-1'/> <p>Lunch Recipes</p></div>
-                <div className='d-flex mb-1'><FaArrowCircleRight className='text-danger mt-1'/> <p>Dinner Recipes</p></div>
-                <div className='d-flex mb-1'><FaArrowCircleRight className='text-danger mt-1'/> <p>Dine & Dash</p></div>
+                <small className='d-flex mb-1'><FaArrowCircleRight className='text-danger mt-1'/> <p>Breakfast Recipes</p></small>
+                <small className='d-flex mb-1'><FaArrowCircleRight className='text-danger mt-1'/> <p>Lunch Recipes</p></small>
+                <small className='d-flex mb-1'><FaArrowCircleRight className='text-danger mt-1'/> <p>Dinner Recipes</p></small>
+                <small className='d-flex mb-1'><FaArrowCircleRight className='text-danger mt-1'/> <p>Dine & Dash</p></small>
             </div>
             {/* social media links */}
-            <div className='col-12 col-lg-3'>
+            <div className='col-4 col-lg-3'>
                 <h4>Get in <br />Connect </h4>
                 {/* 4 icons */}
                 <div className='d-flex'>
