@@ -10,6 +10,7 @@ import Main from '../layouts/Main';
 import Login from '../pages/Login/Login/Login';
 import Register from '../pages/Login/Register/Register';
 import Blog from '../pages/Blog/Blog';
+import Home from '../pages/Home/Home';
 
   const router = createBrowserRouter([
     {
@@ -18,7 +19,7 @@ import Blog from '../pages/Blog/Blog';
       children:[
         {
             path: '/',
-            element: <App></App>
+            element: <Home></Home>,
         },
         {
             path: '/login',
