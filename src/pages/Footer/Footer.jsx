@@ -7,9 +7,9 @@ import { MdFoodBank } from 'react-icons/md'
 const Footer = () => {
     return (
         <>
-        <div className='mx-3 row mt-2 mb-2'>
+        <div className='mx-auto row mt-4 pt-3 bg-black text-white' >
             <div className=' col-12 col-lg-5 text-start'>
-            <div className='d-flex'><MdFoodBank className='text-danger mt-2'></MdFoodBank><p className='text-black dis fs-4 '>ita_Cuisine</p></div>
+            <div className='d-flex'><MdFoodBank className='text-danger mt-2'></MdFoodBank><p className='text-white dis fs-4 '>ita_Cuisine</p></div>
             <small>Welcome to out cuisine. <br /> Best Food for our all customer. <br /> pick your favorite.</small>
             </div>
             {/* categories */}

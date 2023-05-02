@@ -3,14 +3,14 @@ import { Accordion, Collapse, Container } from "react-bootstrap";
 
 const Blog = () => {
   return (
-    <div style={{marginTop: '100px'}} fixed='top' className="">
+    <div style={{marginTop: ''}}  className="">
       <Container className="p-3">
         <Accordion defaultActiveKey="0">
           <Accordion.Item eventKey="0">
-            <Accordion.Header onClick={Collapse}>
+            <Accordion.Header>
               <p
                 style={{
-                  fontSize: "23px",
+                  fontSize: "20px",
                   color: "black",
                   fontWeight: "bold",
                   backgroundColor: "",
@@ -55,7 +55,7 @@ const Blog = () => {
             <Accordion.Header>
               <p
                 style={{
-                  fontSize: "23px",
+                  fontSize: "20px",
                   color: "black",
                   fontWeight: "bold",
                   backgroundColor: "",
@@ -64,7 +64,7 @@ const Blog = () => {
                 How to validate React props using PropTypes
               </p>
             </Accordion.Header>
-            <Accordion.Body>
+            <Accordion.Body className="text-black fs-5">
               <p>
                 In React, props are used to pass data from parent components to
                 child components. Since parent components can pass down any data
@@ -107,9 +107,14 @@ const Blog = () => {
           </Accordion.Item>
           <Accordion.Item eventKey="2">
             <Accordion.Header>
-              Tell us the difference between nodejs and express js.
+              <p   style={{
+                  fontSize: "20px",
+                  color: "black",
+                  fontWeight: "bold",
+                  backgroundColor: "",
+                }}>Tell us the difference between nodejs and express js.</p>
             </Accordion.Header>
-            <Accordion.Body>
+            <Accordion.Body className="text-black fs-5">
               <p>
                 Node.js and Express.js are two different technologies that are
                 often used together to build web applications. Node.js is a
@@ -139,9 +144,15 @@ const Blog = () => {
           </Accordion.Item>
           <Accordion.Item eventKey="3">
             <Accordion.Header>
-              What is a custom hook, and why will you create a custom hook?
+              <p  style={{
+                  fontSize: "20px",
+                  color: "black",
+                  fontWeight: "bold",
+                  backgroundColor: "",
+                }}>What is a custom hook, and why will you create a custom hook?</p>
+
             </Accordion.Header>
-            <Accordion.Body>
+            <Accordion.Body className="text-black fs-5">
               <p>
                 In React, a custom hook is a reusable function that allows you
                 to encapsulate and share logic between components. Custom hooks
