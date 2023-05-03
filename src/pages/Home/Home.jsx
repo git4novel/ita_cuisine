@@ -5,17 +5,18 @@ import { useLoaderData } from 'react-router-dom';
 import FavDishes from './FavoriteDishesSection/FavDishes';
 import Faq from './FaQ/Faq';
 import BannerRedone from '../Banner/BannerRedone';
+import { Container } from 'react-bootstrap';
 
 const Home = () => {
     const data = useLoaderData()
     return (
-        <div>
+        <Container>
             {/* <Banner></Banner> */}
             <BannerRedone/>
             <Chef></Chef>
             <FavDishes></FavDishes>
             <Faq></Faq>
-        </div>
+        </Container>
     );
 };
 
