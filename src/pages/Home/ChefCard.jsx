@@ -8,7 +8,7 @@ const ChefCard = ({ chef }) => {
   return (
     <div className="col-6 col-lg-4 mt-2">
       <Card className="w-100 p-3" style={{height: ''}}>
-        <Card.Img className="rounded-xl" style={{height: '300px'}} variant="top" src={chef_picture} />
+        <Card.Img className="rounded-4" style={{height: '300px'}} variant="top" src={chef_picture} />
         <Card.Body>
           <Card.Title>{chef_name}</Card.Title>
           <div>

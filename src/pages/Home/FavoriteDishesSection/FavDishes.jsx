@@ -17,7 +17,7 @@ const FavDishes = () => {
         <div className="col-6 col-lg-4 mt-2">
           <Card className="w-100 p-3" style={{ height: "" }}>
             <Card.Img
-              className="rounded-xl"
+              className="rounded-3"
               style={{ height: "300px" }}
               variant="top"
               src={favDish.dish_image}
