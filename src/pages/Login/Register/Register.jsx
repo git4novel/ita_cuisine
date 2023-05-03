@@ -20,7 +20,14 @@ const Register = () => {
     const photoUrl = form.photo.value;
     console.log(email, password, photoUrl, name);
 
-    createUser(email, password).then((res) => res.json);
+    createUser(email, password)
+    .then(result =>{
+      const createdUser = result.user;
+      console.log(createdUser);
+    })
+    .catch(error=>{
+      console.log(error);
+    })
   };
 
   return (
