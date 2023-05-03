@@ -26,12 +26,12 @@ import Home from '../pages/Home/Home';
             element: <Login></Login>
         },
         {
-            path: '/login',
-            element: <Register></Register>
-        },
-        {
             path: '/blog',
             element: <Blog></Blog>
+        },
+        {
+          path:'/register',
+          element: <Register></Register>,
         },
         {
             path: '*',

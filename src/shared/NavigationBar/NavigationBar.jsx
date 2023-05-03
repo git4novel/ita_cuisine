@@ -21,7 +21,7 @@ const NavigationBar = () => {
             </Nav>
             <Form className="d-flex">
               <FaUserCircle style={{width:'30px', height: '30px'}} className='align-items-center me-2'/>
-              <Link to='/login'><Button variant="outline-success">Login</Button></Link>
+              <Link to='/login'><Button className='border'  style={{ backgroundColor: "#D54215" }}>Login</Button></Link>
             </Form>
           </Navbar.Collapse>
         </Container>
