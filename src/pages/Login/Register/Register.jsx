@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
-import { FaBeer, FaGithub } from 'react-icons/fa';
-import { FcGoogle } from 'react-icons/fc';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const [error, setError] = useState("")
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -20,13 +19,19 @@ const Register = () => {
     const photoUrl = form.photo.value;
     console.log(email, password, photoUrl, name);
 
+    if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)){
+      setError("password not valid need 8 char ");
+      return;
+    }
+
     createUser(email, password)
     .then(result =>{
       const createdUser = result.user;
       console.log(createdUser);
     })
     .catch(error=>{
-      console.log(error);
+      console.log(error.message);
+      setError(error.message)
     })
   };
 
@@ -66,13 +71,9 @@ const Register = () => {
         >
           Submit
         </Button>
-        <div className="mt-3 mb-1">
-          <Button className="w-100 w-lg-50" variant="outline-primary"><FcGoogle /> Continue With Google</Button>
-          <Button className="mt-1 mt-lg-4 w-100 w-lg-50" variant="outline-secondary"><FaGithub /> Continue With Github</Button>
-        </div>
-       
+        <p className="mt-2 mb-2 text-danger">{error}</p>
         <p>
-          Already Have an Account? Go{" "}
+          Already Have an Account? Go
           <Link to="/login" className="text-decoration-none">
             Login!
           </Link>

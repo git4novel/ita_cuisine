@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Container, Form, Nav, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const NavigationBar = () => {
+  const {user} = useContext(AuthContext)
+
+
     return (
         <Navbar style={{fontFamily: 'sans-serif', fontWeight: 'bold', marginTop: '0px'}}  bg="light" expand="lg" className='mx-auto '>
         <Container fluid>
@@ -21,7 +25,12 @@ const NavigationBar = () => {
             </Nav>
             <Form className="d-flex">
               <FaUserCircle style={{width:'30px', height: '30px'}} className='align-items-center me-2'/>
-              <Link to='/login'><Button className='border'  style={{ backgroundColor: "#D54215" }}>Login</Button></Link>
+              {
+                user ? 
+                <Link to='/login'><Button className='border'  style={{ backgroundColor: "#D54215" }}>Login</Button></Link>
+                :
+                <Button className='border'  style={{ backgroundColor: "#D54215" }}>LogOut</Button>
+              }
             </Form>
           </Navbar.Collapse>
         </Container>
