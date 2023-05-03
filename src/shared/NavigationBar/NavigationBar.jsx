@@ -8,7 +8,7 @@ const NavigationBar = () => {
     return (
         <Navbar style={{fontFamily: 'sans-serif', fontWeight: 'bold', marginTop: '0px'}}  bg="light" expand="lg" className='mx-auto '>
         <Container fluid>
-          <Link to='/'><Navbar.Brand className='fs-4  text-decoration-none' style={{fontFamily: 'cursive'}}>ITa_<span className='text-danger'>Cuisine</span></Navbar.Brand></Link>
+          <Link to='/' className='text-decoration-none'><Navbar.Brand className='fs-4  text-decoration-none' style={{fontFamily: 'cursive'}}>ITa_<span className='text-danger'>Cuisine</span></Navbar.Brand></Link>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav

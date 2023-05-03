@@ -1,10 +1,11 @@
 import React from "react";
 import { Button, Container, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   return (
     <Container className="">
-      <Form className="w-50 border rounded p-2 mx-auto mt-5 pt-4 pb-5 mb-4">
+      <Form className="w-100 w-lg-50 border rounded p-2 mx-auto mt-2 mt-lg-4 pt-2 pt-lg-4 pb-5 mb-4">
         <Form.Group className="mb-3" controlId="formBasicName">
           <Form.Label>Your Name</Form.Label>
           <Form.Control type="text" placeholder="Enter Your Name" />
@@ -31,6 +32,7 @@ const Register = () => {
         >
           Submit
         </Button>
+        <p>Already Have an Account? Go <Link to='/login' className="text-decoration-none">Login!</Link></p>
       </Form>
     </Container>
   );
