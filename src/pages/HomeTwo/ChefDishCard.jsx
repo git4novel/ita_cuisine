@@ -13,7 +13,7 @@ const ChefDishCard = ({chef_id}) => {
     }, [chef_id]);
 
     useEffect(() => {
-      fetch(`http://localhost:5000/chefDishes/${id}`)
+      fetch(`https://italian-chef-server-git4novel.vercel.app/chefDishes/${id}`)
         .then((response) => response.json())
         .then((data) => {
           // Handle the fetched data
@@ -25,7 +25,7 @@ const ChefDishCard = ({chef_id}) => {
         });
     }, [id]);
 
-    console.log(datas)
+    // console.log(datas)
     return (
         <div className='row'>
             <h3 className='text-black fs-3'>Recipes Provided By the Chef</h3>

@@ -5,7 +5,7 @@ const FavDishes = () => {
   const [favDishes, setFavDishes] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/favdishes")
+    fetch("https://italian-chef-server-git4novel.vercel.app/favdishes")
       .then(response => response.json())
       .then(data=> setFavDishes(data))
       .catch((error) => console.log(error));

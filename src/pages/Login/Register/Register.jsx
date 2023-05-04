@@ -21,16 +21,16 @@ const Register = () => {
     // console.log(email, password, photoUrl, name);
 
     // this is here for validation
-    if(!/(?=.*[A-Z].*[A-Z])/.test(password)){
+   /*  if(!/(?=.*[A-Z].*[A-Z])/.test(password)){
       setError("Use Two Upper Case on password")
       return;
-    }
-    else if(!/(?=.*[!@#$&*])/.test(password)){
+    } */
+  /*   else if(!/(?=.*[!@#$&*])/.test(password)){
       setError('Use one special Character')
       return;
-    }
-    else if (!/.{8}/.test(password)){
-      setError("password not valid need 8 char ");
+    } */
+    if (!/.{6}/.test(password)){
+      setError("password not valid need 6 character ");
       return;
     }
 

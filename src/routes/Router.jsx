@@ -39,13 +39,14 @@ import PrivateRoute from './PrivateRoute';
         },
         {
           path: '/:id',
-          element: <HomeTwo></HomeTwo>,
-          loader: ({params}) => fetch(`http://localhost:5000/${params.id}`)
+          element: <PrivateRoute> <HomeTwo></HomeTwo></PrivateRoute>,
+          loader: ({params}) => fetch(`https://italian-chef-server-git4novel.vercel.app/${params.id}`)
         },
         {
-            path: '*',
+            path: '/*',
             element: <ErrorPage></ErrorPage>
         }
+        
       ]
     },
   ]);

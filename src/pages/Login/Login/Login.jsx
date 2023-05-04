@@ -10,12 +10,13 @@ import { FcGoogle } from 'react-icons/fc';
 const Login = () => {
   const { signIn, handleGoogleSignIn, handleGithubLogIn} = useContext(AuthContext);
 
+
   const navigate = useNavigate();
   const location = useLocation();
   console.log(location);
-  const from = location.state?.from?.pathname || '/'
+  const from = location.state?.from?.pathname || '/';
 
-
+  const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
 
   const handleSubmit = (event) => {
@@ -35,6 +36,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        setError(error.message)
       });
   };
 
@@ -83,6 +85,7 @@ const Login = () => {
           </Button>
         </div>
         <p className="text-success">{success}</p>
+        <p className="text-danger">{error}</p>
         <p>
           New here
           <Link to="/register" className="text-decoration-none">
