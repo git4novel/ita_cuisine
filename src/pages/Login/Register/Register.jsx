@@ -1,15 +1,19 @@
 import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
-  const [error, setError] = useState('')
-  const [success, setSuccess] = useState('')
   
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
+  const from = location.state?.from?.pathname || "/";
+
   const handleRegister = (event) => {
     event.preventDefault();
 
@@ -21,34 +25,35 @@ const Register = () => {
     // console.log(email, password, photoUrl, name);
 
     // this is here for validation
-   /*  if(!/(?=.*[A-Z].*[A-Z])/.test(password)){
+    /*  if(!/(?=.*[A-Z].*[A-Z])/.test(password)){
       setError("Use Two Upper Case on password")
       return;
     } */
-  /*   else if(!/(?=.*[!@#$&*])/.test(password)){
+    /*   else if(!/(?=.*[!@#$&*])/.test(password)){
       setError('Use one special Character')
       return;
     } */
-    if (!/.{6}/.test(password)){
+    if (!/.{6}/.test(password)) {
       setError("password not valid need 6 character ");
       return;
     }
 
-    setSuccess('')
+    setSuccess("");
 
     createUser(email, password)
-    .then(result =>{
-      const createdUser = result.user;
-      // console.log(createdUser);
-      setError('');
-      setSuccess('user has created successfully')
-      form.reset();
-    })
-    .catch(error=>{
-      console.log(error.message);
-      setError(error.message)
-      setSuccess('')
-    })
+      .then((result) => {
+        const createdUser = result.user;
+        // console.log(createdUser);
+        setError("");
+        setSuccess("user has created successfully");
+        form.reset();
+        navigate(from, {replace: true})
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setError(error.message);
+        setSuccess("");
+      });
   };
 
   return (
@@ -60,11 +65,21 @@ const Register = () => {
       >
         <Form.Group className="mb-3" controlId="formBasicName">
           <Form.Label>Your Name</Form.Label>
-          <Form.Control name="name" type="text" placeholder="Enter Your Name" required/>
+          <Form.Control
+            name="name"
+            type="text"
+            placeholder="Enter Your Name"
+            required
+          />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control name="email" type="email" placeholder="Enter email" required />
+          <Form.Control
+            name="email"
+            type="email"
+            placeholder="Enter email"
+            required
+          />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -79,7 +94,12 @@ const Register = () => {
 
         <Form.Group className="mb-3" controlId="formBasicPhotoURL">
           <Form.Label>Your Photo URL</Form.Label>
-          <Form.Control name="photo" type="text" placeholder="Your Photo URL"  required/>
+          <Form.Control
+            name="photo"
+            type="text"
+            placeholder="Your Photo URL"
+            required
+          />
         </Form.Group>
 
         <Button

@@ -10,18 +10,20 @@ import {
   signOut,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 export const AuthContext = createContext(null);
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
+
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const [userPhoto, setUserPhoto] = useState(null);
+  const [displayName, setDisplayName]  = useState(null)
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -36,23 +38,17 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-
-
   const handleGoogleSignIn = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
-        const navigate = useNavigate();
-        const location = useLocation();
-        console.log(location);
-        const from = location.state?.from?.pathname || "/";
-
         const signedGoogleUser = result.user;
-        console.log(signedGoogleUser.photoURL);
+        console.log(signedGoogleUser);
         setUserPhoto(signedGoogleUser.photoURL);
-        navigate(from, { replace: true });
+        setDisplayName(signedGoogleUser.displayName)
+        console.log(signedGoogleUser.displayName);
       })
       .catch((error) => {
-        console.log(error.message);
+        console.log(error?.message);
       });
   };
 
@@ -62,7 +58,8 @@ const AuthProvider = ({ children }) => {
         const signedGitUser = result.user;
         console.log(signedGitUser);
         setUserPhoto(signedGitUser.photoURL);
-        navigate(from, { replace: true });
+        setDisplayName(signedGitUser.displayName)
+        console.log(signedGitUser.displayName);
       })
       .catch((error) => {
         console.log(error.message);
@@ -89,6 +86,7 @@ const AuthProvider = ({ children }) => {
     userPhoto,
     handleGithubLogIn,
     loading,
+    displayName
   };
 
   return (

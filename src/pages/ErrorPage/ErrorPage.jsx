@@ -5,21 +5,21 @@ import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
   return (
-    <Container>
-      <section className="flex items-center h-screen p-16 bg-gray-100 text-gray-900">
+    <Container className="mx-auto p-5">
+      <section className="flex mx-6 p-5 items-center h-screen p-16 bg-gray-100 text-gray-900">
         <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
-            className="w-40 h-40 text-gray-700 mb-4"
+            className="w-30 h-30 text-gray-700 mb-4"
           >
             <path
               fill="currentColor"
               d="M256,16C123.452,16,16,123.452,16,256S123.452,496,256,496,496,388.548,496,256,388.548,16,256,16ZM403.078,403.078a207.253,207.253,0,1,1,44.589-66.125A207.332,207.332,0,0,1,403.078,403.078Z"
             ></path>
             <rect
-              width="176"
-              height="32"
+              width="140"
+              height="30"
               x="168"
               y="320"
               fill="currentColor"
@@ -33,19 +33,19 @@ const ErrorPage = () => {
               points="383.958 182.63 360.042 161.37 338.671 185.412 314.63 164.042 293.37 187.958 317.412 209.329 296.042 233.37 319.958 254.63 341.329 230.588 365.37 251.958 386.63 228.042 362.588 206.671 383.958 182.63"
             ></polygon>
           </svg>
-          <p className="font-extrabold text-3xl text-gray-800">
+          <p className="fs-g fs-lg-3 text-white bg-danger text-center px-2 px-lg-5 py-2 py-lg-3">
             Error : false route
           </p>
-          <div className="max-w-md text-center mt-5">
+        </div>
+      </section>
+      <div className="max-w-md text-center mt-5">
             <Link
               to="/"
-              className="text-white px-8 py-3 font-semibold rounded primary-linear-grad-color"
+              className="text-white fs-3 px-lg-4 px-2 text-decoration-none border border-success bg-warning py-3 font-semibold rounded primary-linear-grad-color"
             >
               Back to homepage
             </Link>
           </div>
-        </div>
-      </section>
     </Container>
   );
 };

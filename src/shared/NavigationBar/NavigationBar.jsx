@@ -1,13 +1,19 @@
 import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Container, Form, Nav, Button } from 'react-bootstrap';
+import { Navbar, Container, Form, Nav, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import { AuthContext } from '../../providers/AuthProvider';
+import './NavigationBar.css'
 
 const NavigationBar = () => {
-  const {user, userPhoto, logOut} = useContext(AuthContext)
+  const {user, userPhoto, logOut, displayName} = useContext(AuthContext)
 
+  // to show name when hover to picture
+  const renderTooltip = (props) => (
+    <Tooltip id="display-name-tooltip" {...props}>
+      {displayName}
+    </Tooltip>);
 
     return (
         <Navbar style={{fontFamily: 'sans-serif', fontWeight: 'bold', marginTop: '0px'}}  bg="light" expand="lg" className='mx-auto '>
@@ -24,8 +30,13 @@ const NavigationBar = () => {
               <Link  className='me-2 fs-5 text-dark  text-decoration-none' to='/Blog'>Blog</Link>
             </Nav>
             <Form className="d-flex">
-              {userPhoto ? 
-              <img className='rounded-5 me-2' style={{width:'30px', height: '30px'}} src={userPhoto}></img>
+            {userPhoto ? 
+            <OverlayTrigger
+              placement="bottom"
+              overlay={renderTooltip}
+            >
+              <img className='rounded-5 me-2' style={{width:'30px', height: '30px'}} src={userPhoto} alt="User Profile"/>
+            </OverlayTrigger>
                : <FaUserCircle style={{width:'30px', height: '30px'}} className='align-items-center me-2'/>}
               {
                 user ? 

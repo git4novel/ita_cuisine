@@ -1,17 +1,21 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
+import LazyLoad from 'react-lazy-load';
+
 
 const BannerRedone = () => {
   return (
     <div className="border rounded-4 mt-3 mb-3 w-100">
       <Carousel>
         <Carousel.Item>
+          <LazyLoad>
           <img
             style={{ maxHeight: "700px" }}
             className="d-block w-100 rounded-4"
             src="https://img.freepik.com/free-photo/penne-pasta-tomato-sauce-with-chicken-tomatoes-wooden-table_2829-19744.jpg?w=740&t=st=1683101471~exp=1683102071~hmac=f2fc69b852eb71cf61c164649d3386a28aadb4dcbeaeecc7d86aebe3982f1e0c"
             alt="First slide"
           />
+          </LazyLoad>
           <Carousel.Caption className="text-white mb-1 mb-lg-5">
             <h1
               style={{ fontFamily: "serif", fontWeight: "800" }}

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -13,11 +13,16 @@ const Login = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
+ 
+  // console.log(location);
   const from = location.state?.from?.pathname || '/';
+
+
 
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
+
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -73,9 +78,11 @@ const Login = () => {
           Submit
         </Button>
         <div className="mt-3 mb-1">
+          <Link>
           <Button onClick={handleGoogleSignIn} className="w-100 w-lg-50" variant="outline-primary">
             <FcGoogle /> Continue With Google
           </Button>
+          </Link>
           <Button
             onClick={handleGithubLogIn}
             className="mt-1 mt-lg-4 w-100 w-lg-50"
