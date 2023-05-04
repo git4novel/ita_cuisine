@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import {
-    createBrowserRouter,
+    createBrowserRouter
   } from "react-router-dom";
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import App from '../App';
@@ -11,6 +11,10 @@ import Login from '../pages/Login/Login/Login';
 import Register from '../pages/Login/Register/Register';
 import Blog from '../pages/Blog/Blog';
 import Home from '../pages/Home/Home';
+import HomeTwo from '../pages/HomeTwo/HomeTwo';
+import PrivateRoute from './PrivateRoute';
+
+
 
   const router = createBrowserRouter([
     {
@@ -32,6 +36,11 @@ import Home from '../pages/Home/Home';
         {
           path:'/register',
           element: <Register></Register>,
+        },
+        {
+          path: '/:id',
+          element: <HomeTwo></HomeTwo>,
+          loader: ({params}) => fetch(`http://localhost:5000/${params.id}`)
         },
         {
             path: '*',

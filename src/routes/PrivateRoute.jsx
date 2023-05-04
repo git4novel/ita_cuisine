@@ -1,16 +1,15 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useContext } from 'react';
+import { AuthContext } from '../providers/AuthProvider';
+import { Navigate, useLocation } from 'react-router-dom';
 
-const PrivateRoute = () => {
-    return (
-        <div>
-            <h3>Private Route</h3>
-            <p>lorem 34
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos voluptatum velit, amet enim ratione sapiente earum doloribus, saepe libero illum voluptatibus necessitatibus adipisci reiciendis omnis culpa recusandae sit magni soluta!
-            </p>
-        </div>
-    );
+const PrivateRoute = ({children}) => {
+    const {user} = useContext(AuthContext);
+    const location = useLocation();
+    if(user){
+        return children;
+    }
+    return <Navigate to='/login' state={{from: location}} replace></Navigate>
 };
 
 export default PrivateRoute;

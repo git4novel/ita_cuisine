@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FcLike } from 'react-icons/fc'
 
 const ChefCard = ({ chef }) => {
-    const {_id, chef_picture, chef_name, years_of_experience, number_of_recipes, likes} = chef;
+    const {_id, chef_id, chef_picture, chef_name, years_of_experience, number_of_recipes, likes} = chef;
   return (
     <div className="col-6 col-lg-4 mt-2">
       <Card className="w-100 p-3" style={{height: ''}}>
@@ -16,7 +16,7 @@ const ChefCard = ({ chef }) => {
             <p>Number of Recipes: {number_of_recipes}</p>
             <p><FcLike/> Like Count: {likes}</p>
           </div>
-          <Link ><Button  style={{backgroundColor:"#D54215"}}  className="text-white border" >
+          <Link to={`/${_id}`}><Button  style={{backgroundColor:"#D54215"}}  className="text-white border" >
             View Recipes
           </Button></Link>
         </Card.Body>

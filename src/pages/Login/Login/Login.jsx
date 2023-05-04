@@ -1,14 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, handleGoogleSignIn, handleGithubLogIn} = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
+  const from = location.state?.from?.pathname || '/'
+
+
+  const [success, setSuccess] = useState('')
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -17,10 +25,13 @@ const Login = () => {
     const password = form.password.value;
     console.log(email, password);
 
+    setSuccess('')
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        setSuccess('User entered successfully')
+        navigate(from, {replace: true})
       })
       .catch((error) => {
         console.log(error);
@@ -60,18 +71,20 @@ const Login = () => {
           Submit
         </Button>
         <div className="mt-3 mb-1">
-          <Button className="w-100 w-lg-50" variant="outline-primary">
+          <Button onClick={handleGoogleSignIn} className="w-100 w-lg-50" variant="outline-primary">
             <FcGoogle /> Continue With Google
           </Button>
           <Button
+            onClick={handleGithubLogIn}
             className="mt-1 mt-lg-4 w-100 w-lg-50"
             variant="outline-secondary"
           >
             <FaGithub /> Continue With Github
           </Button>
         </div>
+        <p className="text-success">{success}</p>
         <p>
-          New here{" "}
+          New here
           <Link to="/register" className="text-decoration-none">
             Register!
           </Link>
