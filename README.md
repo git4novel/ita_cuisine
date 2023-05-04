@@ -9,4 +9,4 @@
 
 
 ## __Live Link -__
-- __[click](https://shimmering-cannoli-65c507.netlify.app/)__ - to go to live site
+- __[click](https://italian-chef-hunt.web.app/)__ - to go to live site
