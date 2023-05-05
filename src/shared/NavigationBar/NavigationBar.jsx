@@ -4,7 +4,6 @@ import { Navbar, Container, Form, Nav, Button, OverlayTrigger, Tooltip } from 'r
 import { Link } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import { AuthContext } from '../../providers/AuthProvider';
-import './NavigationBar.css'
 
 const NavigationBar = () => {
   const {user, userPhoto, logOut, displayName} = useContext(AuthContext)

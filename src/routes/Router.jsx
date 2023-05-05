@@ -3,14 +3,14 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
-import App from "../App";
 import Main from "../layouts/Main";
 import Login from "../pages/Login/Login/Login";
 import Register from "../pages/Login/Register/Register";
-import Blog from "../pages/Blog/Blog";
 import Home from "../pages/Home/Home";
-import HomeTwo from "../pages/HomeTwo/HomeTwo";
+import HomeTwo from "../layouts/HomeTwo";
 import PrivateRoute from "./PrivateRoute";
+import Blog from "../pages/Blog/Blog";
+
 
 const router = createBrowserRouter([
   {

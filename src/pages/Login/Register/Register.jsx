@@ -7,8 +7,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const Register = () => {
   const { createUser } = useContext(AuthContext);
   
+  // setting error and success message on condition.
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  // directing to path where user wanted to go
   const navigate = useNavigate();
   const location = useLocation();
   console.log(location);
