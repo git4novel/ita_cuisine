@@ -1,28 +1,49 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../providers/AuthProvider";
-import { FaGithub } from 'react-icons/fa';
-import { FcGoogle } from 'react-icons/fc';
-
+import { FaGithub } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+import { auth } from "../../../firebase/firebase.config";
 
 const Login = () => {
-  const { signIn, handleGoogleSignIn, handleGithubLogIn} = useContext(AuthContext);
-
-
   const navigate = useNavigate();
   const location = useLocation();
- 
-  // console.log(location);
-  const from = location.state?.from?.pathname || '/';
 
+  const from = location.state?.from?.pathname || "/";
+  console.log(from);
 
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-  const [error, setError] = useState('')
-  const [success, setSuccess] = useState('')
+  // sign in with google
+  const handleGoogleSignIn = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then(() => {
+        navigate(from);
+      })
+      .catch((error) => {
+        setError(error.code);
+      });
+  };
 
-  
+  // sign in with github
+  const handleGithubLogIn = () => {
+    const provider = new GithubAuthProvider();
+    signInWithPopup(auth, provider)
+      .then(() => {
+        navigate(from);
+      })
+      .catch((error) => {
+        setError(error.code);
+      });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -31,17 +52,17 @@ const Login = () => {
     const password = form.password.value;
     console.log(email, password);
 
-    setSuccess('')
+    setSuccess("");
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        setSuccess('User entered successfully')
-        navigate(from, {replace: true})
+        setSuccess("User entered successfully");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
-        setError(error.message)
+        setError(error.message);
       });
   };
 
@@ -79,9 +100,13 @@ const Login = () => {
         </Button>
         <div className="mt-3 mb-1">
           <Link>
-          <Button onClick={handleGoogleSignIn} className="w-100 w-lg-50" variant="outline-primary">
-            <FcGoogle /> Continue With Google
-          </Button>
+            <Button
+              onClick={handleGoogleSignIn}
+              className="w-100 w-lg-50"
+              variant="outline-primary"
+            >
+              <FcGoogle /> Continue With Google
+            </Button>
           </Link>
           <Button
             onClick={handleGithubLogIn}

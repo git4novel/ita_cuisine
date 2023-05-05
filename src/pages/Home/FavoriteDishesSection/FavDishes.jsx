@@ -6,16 +6,16 @@ const FavDishes = () => {
 
   useEffect(() => {
     fetch("https://italian-chef-server-git4novel.vercel.app/favdishes")
-      .then(response => response.json())
-      .then(data=> setFavDishes(data))
+      .then((response) => response.json())
+      .then((data) => setFavDishes(data))
       .catch((error) => console.log(error));
   }, []);
 
   return (
     <div className="row mt-5 mb-5">
       <h3 className="text-center mt-4">Most Liked Dishes From Us</h3>
-      {favDishes.map((favDish) => (
-        <div className="col-6 col-lg-4 mt-2">
+      {favDishes.map((favDish, index) => (
+        <div key={index} className="col-6 col-lg-4 mt-2">
           <Card className="w-100 p-3" style={{ height: "" }}>
             <Card.Img
               className="rounded-3"

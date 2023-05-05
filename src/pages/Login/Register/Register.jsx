@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, {  useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../providers/AuthProvider";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../../../firebase/firebase.config";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
   
   // setting error and success message on condition.
   const [error, setError] = useState("");
@@ -25,17 +25,7 @@ const Register = () => {
     const name = form.name.value;
     const password = form.password.value;
     const photoUrl = form.photo.value;
-    // console.log(email, password, photoUrl, name);
-
-    // this is here for validation
-    /*  if(!/(?=.*[A-Z].*[A-Z])/.test(password)){
-      setError("Use Two Upper Case on password")
-      return;
-    } */
-    /*   else if(!/(?=.*[!@#$&*])/.test(password)){
-      setError('Use one special Character')
-      return;
-    } */
+  
     if (!/.{6}/.test(password)) {
       setError("password not valid need 6 character ");
       return;
@@ -43,14 +33,16 @@ const Register = () => {
 
     setSuccess("");
 
-    createUser(email, password)
+    createUserWithEmailAndPassword(auth,email, password)
       .then((result) => {
-        const createdUser = result.user;
-        // console.log(createdUser);
-        setError("");
-        setSuccess("user has created successfully");
-        form.reset();
-        navigate(from, {replace: true})
+        updateProfile(result.user,{
+          displayName: name,
+          photoURL: photoUrl
+        }).then(() =>{
+          setSuccess("Register successfully")
+          navigate(from)
+
+        })
       })
       .catch((error) => {
         console.log(error.message);
@@ -72,7 +64,6 @@ const Register = () => {
             name="name"
             type="text"
             placeholder="Enter Your Name"
-            required
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -101,7 +92,6 @@ const Register = () => {
             name="photo"
             type="text"
             placeholder="Your Photo URL"
-            required
           />
         </Form.Group>
 
