@@ -9,7 +9,7 @@ import {
   OverlayTrigger,
   Tooltip,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { AuthContext } from "../../providers/AuthProvider";
 import { signOut } from "firebase/auth";
@@ -18,6 +18,7 @@ import { auth } from "../../firebase/firebase.config";
 const NavigationBar = () => {
   const { currentUser } = useContext(AuthContext);
 
+  const location = useLocation();
   // to show name when hover to picture
   const renderTooltip = (props) => (
     <Tooltip i="display-name-tooltip" {...props}>
@@ -33,14 +34,14 @@ const NavigationBar = () => {
       className="mx-auto "
     >
       <Container fluid>
-        <Link to="/" className="text-decoration-none">
+        <NavLink to="/" className="text-decoration-none">
           <Navbar.Brand
             className="fs-4  text-decoration-none"
             style={{ fontFamily: "cursive" }}
           >
             ITa_<span className="text-danger">Cuisine</span>
           </Navbar.Brand>
-        </Link>
+        </NavLink>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -48,15 +49,16 @@ const NavigationBar = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Link className="me-2 fs-5 text-dark text-decoration-none" to="/">
+
+            <NavLink exact to="/" isActive={() => location.pathname === '/'} className="me-2 fs-5 text-dark text-decoration-none">
               Home
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
+             exact to="/blog" isActive={() => location.pathname === '/'} 
               className="me-2 fs-5 text-dark  text-decoration-none"
-              to="/Blog"
             >
               Blog
-            </Link>
+            </NavLink>
           </Nav>
           <Form className="d-flex">
             {currentUser ? (

@@ -60,6 +60,7 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         setSuccess("User entered successfully");
+        setError("")
         navigate(from, { replace: true });
       })
       .catch((error) => {
