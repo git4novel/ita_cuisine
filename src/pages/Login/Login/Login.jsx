@@ -7,6 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 import {
   GithubAuthProvider,
   GoogleAuthProvider,
+  signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../../../firebase/firebase.config";
@@ -26,6 +27,7 @@ const Login = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then(() => {
+        setSuccess('Google login Successful')
         navigate(from);
       })
       .catch((error) => {
@@ -53,7 +55,7 @@ const Login = () => {
     console.log(email, password);
 
     setSuccess("");
-    signIn(email, password)
+    signInWithEmailAndPassword(auth,email, password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
