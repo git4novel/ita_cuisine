@@ -1,6 +1,7 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
 import LazyLoad from 'react-lazy-load';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 
 const BannerRedone = () => {
@@ -9,7 +10,7 @@ const BannerRedone = () => {
       <Carousel>
         <Carousel.Item>
           <LazyLoad>
-          <img
+          <LazyLoadImage
             style={{ maxHeight: "700px" }}
             className="d-block w-100 rounded-4"
             src="https://img.freepik.com/free-photo/penne-pasta-tomato-sauce-with-chicken-tomatoes-wooden-table_2829-19744.jpg?w=740&t=st=1683101471~exp=1683102071~hmac=f2fc69b852eb71cf61c164649d3386a28aadb4dcbeaeecc7d86aebe3982f1e0c"
@@ -27,7 +28,7 @@ const BannerRedone = () => {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img
+          <LazyLoadImage
             style={{ maxHeight: "700px" }}
             className="d-block w-100 rounded-4"
             src="https://img.freepik.com/premium-photo/full-table-italian-meals-plates-black-background_259258-16.jpg?w=740"
@@ -45,7 +46,7 @@ const BannerRedone = () => {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img
+          <LazyLoadImage
             style={{ maxHeight: "700px" }}
             className="d-block w-100 rounded-4"
             src="https://img.freepik.com/premium-photo/table-full-food-top-view-set-dishes-table-meat-salad-dessert-table-top-view_229797-371.jpg?w=740"
