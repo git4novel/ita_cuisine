@@ -15,6 +15,8 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebase.config";
 
+
+
 const NavigationBar = () => {
   const { currentUser } = useContext(AuthContext);
 
@@ -62,7 +64,7 @@ const NavigationBar = () => {
           </Nav>
           <Form className="d-flex">
             {currentUser ? (
-              <OverlayTrigger placement="bottom" overlay={renderTooltip}>
+              <OverlayTrigger placement="right" overlay={renderTooltip}>
                 <img
                   className="rounded-5 me-2"
                   style={{ width: "30px", height: "30px" }}
